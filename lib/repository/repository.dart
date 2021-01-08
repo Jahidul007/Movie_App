@@ -1,7 +1,10 @@
 import 'package:dio/dio.dart';
+import 'package:movie_app/model/cast_response.dart';
 import 'package:movie_app/model/genre_response.dart';
+import 'package:movie_app/model/movie_detail_response.dart';
 import 'package:movie_app/model/movie_response.dart';
 import 'package:movie_app/model/person_response.dart';
+import 'package:movie_app/model/video_response.dart';
 
 class MovieRepository {
   final String apiKey = "f3930330518345dba7041a29775a7176";
@@ -74,7 +77,7 @@ class MovieRepository {
     }
   }
 
-  /*Future<MovieDetailResponse> getMovieDetail(int id) async {
+  Future<MovieDetailResponse> getMovieDetail(int id) async {
     var params = {
       "api_key": apiKey,
       "language": "en-US"
@@ -88,7 +91,7 @@ class MovieRepository {
     }
   }
 
-  Future<VideoResponse> getMovieVideos(int id) async {
+ Future<VideoResponse> getMovieVideos(int id) async {
     var params = {
       "api_key": apiKey,
       "language": "en-US"
@@ -128,5 +131,5 @@ class MovieRepository {
       print("Exception occured: $error stackTrace: $stacktrace");
       return CastResponse.withError("$error");
     }
-  }*/
+  }
 }
