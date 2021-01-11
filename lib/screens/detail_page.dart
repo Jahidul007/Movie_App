@@ -9,6 +9,7 @@ import 'package:movie_app/model/video_response.dart';
 import 'package:movie_app/style/theme.dart' as Style;
 import 'package:movie_app/widgets/buildErrorWidget.dart';
 import 'package:movie_app/widgets/buildLoadingWidget.dart';
+import 'package:movie_app/widgets/casts.dart';
 import 'package:movie_app/widgets/movie_info.dart';
 import 'package:sliver_fab/sliver_fab.dart';
 
@@ -181,6 +182,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                       MovieInfo(
                         id: movie.id,
                       ),
+                      Casts(id: movie.id,)
                     ],
                   ),
                 ),
