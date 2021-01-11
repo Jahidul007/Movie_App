@@ -1,4 +1,7 @@
+import 'package:eva_icons_flutter/eva_icons_flutter.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:movie_app/bloc/get_movies_video_bloc.dart';
 import 'package:movie_app/model/movie.dart';
 import 'package:movie_app/model/video.dart';
@@ -6,6 +9,7 @@ import 'package:movie_app/model/video_response.dart';
 import 'package:movie_app/style/theme.dart' as Style;
 import 'package:movie_app/widgets/buildErrorWidget.dart';
 import 'package:movie_app/widgets/buildLoadingWidget.dart';
+import 'package:movie_app/widgets/movie_info.dart';
 import 'package:sliver_fab/sliver_fab.dart';
 
 class MovieDetailScreen extends StatefulWidget {
@@ -103,6 +107,79 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                             ],
                           ),
                         ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SliverPadding(
+                padding: EdgeInsets.all(0.0),
+                sliver: SliverList(
+                  delegate: SliverChildListDelegate(
+                    [
+                      Padding(
+                        padding: EdgeInsets.only(left: 10, top: 20),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: <Widget>[
+                            Text(
+                              movie.rating.toString(),
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 14.0,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            SizedBox(
+                              width: 5.0,
+                            ),
+                            RatingBar.builder(
+                              itemSize: 8.0,
+                              initialRating: movie.rating / 2,
+                              minRating: 1,
+                              direction: Axis.horizontal,
+                              allowHalfRating: true,
+                              itemCount: 5,
+                              itemPadding:
+                                  EdgeInsets.symmetric(horizontal: 2.0),
+                              itemBuilder: (context, _) => Icon(
+                                EvaIcons.star,
+                                color: Style.Colors.secondColor,
+                              ),
+                              onRatingUpdate: (rating) {
+                                print(rating);
+                              },
+                            ),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(left: 10, top: 20),
+                        child: Text(
+                          "OVERVIEW",
+                          style: TextStyle(
+                            color: Style.Colors.titleColor,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 12,
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Padding(
+                        padding: EdgeInsets.all(10),
+                        child: Text(
+                          movie.overview,
+                          style: TextStyle(
+                              color: Colors.white, fontSize: 12, height: 1.5),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      MovieInfo(
+                        id: movie.id,
                       ),
                     ],
                   ),
