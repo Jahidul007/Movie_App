@@ -20,7 +20,7 @@ class _HomeState extends State<Home> {
         backgroundColor: Style.Colors.mainColor,
         centerTitle: true,
         leading: Icon(EvaIcons.menu2Outline, color: Colors.white,),
-        title: Text("Movie App"),
+        title: Text("DISCOVER"),
         actions: <Widget>[
           IconButton(
               onPressed: () {},
